@@ -10,7 +10,7 @@ function my_copy(){
         if [ -f $first_argument ] && [ ! -d $second_argument ] && [ $# == 2 ]
 	then
 
-	cat  $first_argument >> $second_argument
+	cat  $first_argument > $second_argument
 	
 	#copy for directory
 
