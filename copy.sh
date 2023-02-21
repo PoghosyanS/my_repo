@@ -12,7 +12,7 @@ function my_copy(){
 
 	cat  $first_argument > $second_argument
 	
-	#copy for directory
+	#copy files in directory directory
 
 	elif [  -d ${!#} ]
 	then 
@@ -27,5 +27,29 @@ function my_copy(){
 		fi
 	done
 	fi
+
+	#copy directories in directory
+	if [ -d $first_argument ]
+	then
+		mkdir -p "$second_argument"
+		
+		for myfile in "$first_argument"/*
+		do
+			if [ -d "$myfile" ]
+			then    
+				#call recursion function 
+				my_copy "$myfile" "$second_argument/$(basename "$myfile")"
+			else
+				#call recursion function
+				my_copy "$myfile" "$second_argument"
+			fi
+		done
+		else 
+			cp "$first_argument"  "$second_argument"
+
+	
+	fi
+
+	
 }
 my_copy $@
