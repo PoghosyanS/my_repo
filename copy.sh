@@ -49,9 +49,6 @@ function my_copy(){
 				my_copy "$myfile" "$second_argument/$(basename "$myfile")"
 
 
-			else
-				#call recursion function
-				cp "$myfile" "$second_argument"
 			fi
 	
 		done
