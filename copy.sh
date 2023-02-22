@@ -30,8 +30,16 @@ function my_copy(){
 
 	#copy directories in directory
 	if [ -d $first_argument ]
-	then
-		mkdir -p "$second_argument"
+	then    
+
+		#check first directory is empty or not
+	        if [ -z "$(ls -A "$first_argument")" ]
+		then
+			mkdir -p "$second_argument/$(basename "$first_argument")"
+		
+		else
+			mkdir -p "$second_argument/$(basename "$first_argument")"
+
 		
 		for myfile in "$first_argument"/*
 		do
@@ -39,17 +47,20 @@ function my_copy(){
 			then    
 				#call recursion function 
 				my_copy "$myfile" "$second_argument/$(basename "$myfile")"
+
+
 			else
 				#call recursion function
-				my_copy "$myfile" "$second_argument"
+				cp "$myfile" "$second_argument"
 			fi
+	
 		done
+		fi
+				
 		else 
 			cp "$first_argument"  "$second_argument"
 
-	
-	fi
-
-	
+	  
+	fi	
 }
 my_copy $@
