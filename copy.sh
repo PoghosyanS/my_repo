@@ -47,7 +47,10 @@ function my_copy(){
 			then    
 				#call recursion function 
 				my_copy "$myfile" "$second_argument/$(basename "$myfile")"
-
+			elif [ -f $myfile ]
+			then
+				
+	                       cat  $myfile > $second_argument/$myfile
 
 			fi
 	
