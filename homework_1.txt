@@ -1,0 +1,37 @@
+#include <iostream>
+
+int main()
+{
+        //declare numbers 
+        int num1,num2,num3;
+
+        //temprurary variables
+        int c,d,e = 0;
+
+        std::cout<<"enter a numbers : "<<std::endl;
+        std::cin>>num1>>num2>>num3;
+
+        if (num1 > num2 )
+        {
+                c = num1;
+                num1 = num2;
+                num2 = c;
+        }
+        if (num1 > num3 )
+        {
+                d = num1;
+                num1 = num3;
+                num3 = d;
+        }
+        if (num2 > num3 )
+        {
+                e = num2;
+                num2 = num3;
+                num3 = e;
+        }
+        std::cout<<num1<<" "<<num2<<" "<<num3<<std::endl;
+        return 0;
+}
+~                                                                                      
+~                                                                                      
+                                         
