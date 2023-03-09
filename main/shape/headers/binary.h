@@ -1,0 +1,1 @@
+void bin(int num);
