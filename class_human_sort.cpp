@@ -2,46 +2,53 @@
 
 class Human
 {
-public:
-	int age;
-	std::string name;
+	private:
+		int age;
+		std::string name;
+	public:
+		Human()
+		{
+
+		}
+		Human(int value_age,std::string value_name)
+		{
+			age = value_age;
+			name = value_name; 
+		}
+		int get_age()
+		{
+			return age;
+		}
+		std::string get_name()
+		{
+			return name;
+		}
 };
 
-void make_arr(Human arr[],int size)
-{
-	for (int i = 0;i < size;i++)
-	{
-		std::cout<<"enter a age  ";
-		std::cin>>arr[i].age;
-		std::cout<<"enter a names  ";
-		std::cin>>arr[i].name;
-	}
-}
 
 void show(Human arr[],int size)
 {
 
 	for (int i = 0;i < size;i++)
 	{
-		std::cout<<arr[i].name<<'\t';
+		std::cout<<arr[i].get_name()<<'\t';
 	}
 	std::cout<<std::endl;
 }
+
 
 void sorting(Human arr[],int size)
 {
 	for (int i = 0;i < size - 1;i++)
 	{
-		for (int j = 0; j < size - 1 - i;j++)
+		for (int j = 0; j < size  - i - 1;j++)
 		{
-			if (arr[j].age > arr[j + 1].age)
-			{
-				int temp_age = arr[j].age;
-				std::string temp_name = arr[j].name;
-				arr[j].age = arr[j + 1].age;
-				arr[j].name = arr[j + 1].name;
-				arr[j + 1].age = temp_age;
-				arr[j + 1].name = temp_name;
+			if (arr[j].get_age() > arr[j + 1].get_age())
+			{	
+
+				Human temp_age = arr[j];
+				arr[j] = arr[j + 1] ;
+				arr[j + 1]  = temp_age;
 			}
 		}
 	}
@@ -49,22 +56,24 @@ void sorting(Human arr[],int size)
 
 
 int main()
-{
-	Human h1;
-	Human h2;
-	Human h3;
-	Human h4;
-	Human h5;
+{	
+	
+	Human h1(99,"Smith");
+	Human h2(32,"John");
+	Human h3(45,"Adam");
+	Human h4(23,"Seul");
+	Human h5(11,"Anny");
 
 	int size = 5;
-	Human arr[size] = {h1,h2,h3,h4,h5};
-	make_arr(arr,size);
+
+	Human *arr = new Human[size]{h1,h2,h3,h4,h5};
 	std::cout<<"before sorting"<<std::endl;
 	show(arr,size);
 	sorting(arr,size);
 	std::cout<<"after sorting"<<std::endl;
 	show(arr,size);
-
+	
+	delete [] arr;
 
 	return 0;
 }
