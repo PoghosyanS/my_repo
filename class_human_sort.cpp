@@ -8,42 +8,33 @@ class Human
 	public:
 		Human()
 		{
-
 		}
 		Human(int value_age,std::string value_name)
 		{
 			age = value_age;
 			name = value_name; 
 		}
-		int get_age()
+			
+		bool operator>(const Human& other)
 		{
-			return age;
+			return this->age > other.age;
 		}
-		std::string get_name()
+
+		void print()
 		{
-			return name;
+			std::cout<< name<<std::endl;
 		}
 };
-
-
-void show(Human arr[],int size)
-{
-
-	for (int i = 0;i < size;i++)
-	{
-		std::cout<<arr[i].get_name()<<'\t';
-	}
-	std::cout<<std::endl;
-}
-
+		
 
 void sorting(Human arr[],int size)
-{
+{	
+	
 	for (int i = 0;i < size - 1;i++)
 	{
 		for (int j = 0; j < size  - i - 1;j++)
 		{
-			if (arr[j].get_age() > arr[j + 1].get_age())
+			if (arr[j] > arr[j + 1])
 			{	
 
 				Human temp_age = arr[j];
@@ -58,20 +49,21 @@ void sorting(Human arr[],int size)
 int main()
 {	
 	
-	Human h1(99,"Smith");
-	Human h2(32,"John");
-	Human h3(45,"Adam");
-	Human h4(23,"Seul");
-	Human h5(11,"Anny");
-
 	int size = 5;
 
-	Human *arr = new Human[size]{h1,h2,h3,h4,h5};
-	std::cout<<"before sorting"<<std::endl;
-	show(arr,size);
+	Human *arr = new Human[size]{
+
+	Human(99,"Smith"),
+	Human(32,"John"),
+	Human(45,"Adam"),
+	Human(23,"Seul"),
+	Human(11,"Anny")};
+
 	sorting(arr,size);
-	std::cout<<"after sorting"<<std::endl;
-	show(arr,size);
+	for (int i = 0;i < size;i++)
+	{
+		arr[i].print();
+	}
 	
 	delete [] arr;
 
