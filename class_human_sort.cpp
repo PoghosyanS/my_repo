@@ -6,6 +6,7 @@ class Human
 		int age;
 		std::string name;
 	public:
+		static int count;
 		Human()
 		{
 		}
@@ -13,6 +14,7 @@ class Human
 		{
 			age = value_age;
 			name = value_name; 
+			count++;
 		}
 			
 		bool operator>(const Human& other)
@@ -25,6 +27,8 @@ class Human
 			std::cout<< name<<std::endl;
 		}
 };
+
+int Human::count = 0;
 		
 
 void sorting(Human arr[],int size)
@@ -49,18 +53,22 @@ void sorting(Human arr[],int size)
 int main()
 {	
 	
-	int size = 5;
+	//Human a1(98,"leo");
+	Human a1(99,"Smith");
+	Human a2(32,"John");
+	Human a3(45,"Adam");
+	Human a4(23,"Seul");
+	Human a5(11,"Anny");
+	Human *arr = new Human[a1.count]{a1,a2,a3,a4,a5};
 
-	Human *arr = new Human[size]{
 
-	Human(99,"Smith"),
-	Human(32,"John"),
-	Human(45,"Adam"),
-	Human(23,"Seul"),
-	Human(11,"Anny")};
 
-	sorting(arr,size);
-	for (int i = 0;i < size;i++)
+
+
+	
+
+	sorting(arr,Human::count);
+	for (int i = 0;i < Human::count;i++)
 	{
 		arr[i].print();
 	}
