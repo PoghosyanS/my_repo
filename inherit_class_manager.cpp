@@ -139,10 +139,10 @@ int main()
 {
 
 	Manager a("Anny","Smith",77,"Apple",9000000,10,6,"programmer");
-	Staff e("gago","hovh",33,"zavod",50000,10,7,"programmer");
+	Staff e("Anna","hovh",33,"zavod",50000,10,7,"programmer");
 	Staff f("wil","Smith",55,"Amazon",60000,10,8,"programmer");
 	Staff g("Anny","William",45,"Google",40000,10,9,"finanser");
-	Staff h("Gago","Petrosyan",65,"Grand Candy",70000,10,8,"programmer");
+	Staff h("Hovhannes","Petrosyan",65,"Grand Candy",70000,10,8,"programmer");
 	Staff j("Lusine","Martirosyan",45,"School",90000,4,9,"teacher");
 	a.hire(e);
 	a.hire(f);
