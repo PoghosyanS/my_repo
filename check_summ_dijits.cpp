@@ -8,7 +8,7 @@ int main()
     int sum = 0;
 
     std::cout << "Enter a  integer number: ";
-    //check input number is integer or not
+    //check input number is integer or not and positive or not
     while(!(std::cin>>num) || (std::cin.peek() != '\n') || (num < 0))
     {	
     	//clear error flags
