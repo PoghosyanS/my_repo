@@ -97,13 +97,17 @@ void check_cin()
 int main(int argc,char* argv[])
 {
 	//check if input "-t" call a function input_output_file else check_cin()
-	if (argc > 1 && std::string(argv[1]) == "-t")
+	if (argc > 1 && argc < 3  && std::string(argv[1]) == "-t")
 	{
 		input_output_file();	
 	}
-	else
+	else if (argc == 1)
 	{
 		check_cin();
+	}
+	else
+	{	
+		std::cout<<"please if you wont run with file press -t"<<std::endl;
 	}
 
 	return 0;
