@@ -1,9 +1,9 @@
 #include <iostream>
 #include <fstream>
-#include <cassert>
+
 
 //input file name
-std::string path = "input_file.txt";
+std::string input_file = "input_file.txt";
 
 //object of ifstream class
 std::ifstream fin;
@@ -12,16 +12,36 @@ std::ifstream fin;
 std::ofstream fout;
 
 //output file name
-std::string path1 = "output_file.txt";
+std::string output_file = "output_file.txt";
+
+//function returned sum of digits number and checked number int or not
+int sum_of_digits(std::string str)
+{
+	int sum = 0;		
+	for (int j = 0;j < str.length();j++)
+	{
+	//check integer or not
+		if(isdigit(str[j]))
+		{
+			sum += str[j] - '0';
+		}
+		else
+		{
+			return -1;
+		}
+	}
+	return sum;
+}
+
 
 //function wich have input file and creat output file
 void input_output_file()
 {
 	//open input file
-	fin.open(path);
+	fin.open(input_file);
 
 	//open output file and append output  in every run
-	fout.open(path1,std::ofstream::app);
+	fout.open(output_file);
 
 	//check file is correct open or not
 	if (!fin.is_open())
@@ -30,80 +50,60 @@ void input_output_file()
 	}
 	else
 	{	
-		std::string str;
+		std::string str; 
+		//int sum = 0;
 		while(getline(fin,str))
-		{	
-			
-			int sum = 0;		
-			for (int j = 0;j < str.length();j++)
-			{
-				//check integer or not
-				if(isdigit(str[j]))
-				{
-					sum += str[j] - '0';
-				}
-				else
-				{
-					fout<<"its a not integer";
-					fout<<"\n";
-				}
-			}
-			if (sum != 0)
-			{
+		{			
+			int sum = sum_of_digits(str);
+			if (sum == -1){
 
+				fout<<"its a not integer"<<std::endl;;
+				//fout<<'\n';
+			}
+			else if (sum != 0)
+			{
 				fout<<sum;
-				fout<<"\n";
+				fout<<'\n';
 			}
-
 		}
-		
 	}
 	fout.close();
 	fin.close();
 }
 
-//function wich check for input number in terminal
-void check_cin()
+//function wich is entered by the user
+int input_user()
 {
-	int num;
-	int sum = 0;
-	int value = 0;
-
-	std::cout<<"enter a number "<<std::endl;
-
-	//check input number is integer and positive or not
-	while (!(std::cin>>num) || (std::cin.peek() != '\n') || (num < 0))
+	
+	while (true)
 	{
-		//clear error flags
-		std::cin.clear();
-		//ignore any remaining characters
-		std::cin.ignore(1000,'\n');
-		std::cout<<"please enter a integer number"<<std::endl;
+		std::cout<<"enter a number :"<<std::endl;
+		std::string str;
+		std::cin>>str;
+		int sum = sum_of_digits(str);
+		if (sum != -1)
+		{
+			return sum;
+		}
+		else
+		{
+			std::cout<<"please enter a number :"<<std::endl;
+		}
 	}
-
-	//additional verification
-	assert(num >= 0);
-
-	while (num != 0)
-	{
-		value = num % 10;
-		sum += value;
-		num /= 10;
-	}
-	std::cout<<"sum of digits = "<<sum<<std::endl;
-
 }
+
+
 
 int main(int argc,char* argv[])
 {
-	//check if input "-t" call a function input_output_file else check_cin()
-	if (argc > 1 && argc < 3  && std::string(argv[1]) == "-t")
+	if (argc == 2  && std::string(argv[1]) == "-t")
 	{
 		input_output_file();	
 	}
 	else if (argc == 1)
 	{
-		check_cin();
+		std::cout<<input_user()<<std::endl;
+		
 	}
 	else
 	{	
