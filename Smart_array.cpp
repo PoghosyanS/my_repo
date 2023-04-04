@@ -6,6 +6,12 @@ class Smart_array{
 	int *arr;
 
 	public:
+
+	Smart_array()
+	{
+		this->size = size;
+		size = 0;
+	}
 		
 	Smart_array(int size){
 		this->size = size;
