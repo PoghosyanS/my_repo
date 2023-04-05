@@ -2,26 +2,26 @@
 #include "vector.h"
 #include <cassert>
 
-//function which make a capasity 
-void Vector::change_capasity(){
+//function which make a capacity 
+void Vector::change_capacity(){
 
-	m_capasity *= 2;
-	int *temp_arr = new int[m_capasity];
+	m_capacity *= 2;
+	int *temp_arr = new int[m_capacity];
 	for (int i = 0; i < m_size;i++){
 		temp_arr[i] = m_arr[i];
 	}
 	delete [] m_arr;
 	m_arr = temp_arr;
 }
-//constructor definition
+//constructor which initializate Vector members
 Vector::Vector(){
 	
-	m_arr = new int[m_capasity];
 	m_size = 0;
-	m_capasity = 5;
+	m_capacity = 5;
+	m_arr = new int[m_capacity];
 }
 
-//destructor definition
+//destructor which delete m_arr
 Vector::~Vector(){
 	
 	delete [] m_arr;
@@ -30,21 +30,36 @@ Vector::~Vector(){
 //function which append element end of vector
 void Vector::push_back(int value){
 		
-		if (m_size == m_capasity){
+		if (m_size == m_capacity){
 			
-			change_capasity();
+			change_capacity();
 		}
-		m_arr[m_size++] = value;
+		m_arr[m_size] = value;
+		m_size++;
 }
 
-//function which delete element end of vector
+//function wich append element in your set index 
+void Vector::insert(int index,int value){
+	
+	if (m_size == m_capacity){
+		change_capacity();
+	}
+
+	for (int i = m_size - 1;i >= index;i--){
+		
+		m_arr[i + 1] = m_arr[i];
+	}
+	
+	m_arr[index] = value;
+	m_size++;
+}
+
+//function which delete element end of vector and check if size of vector less than zero terminate the program
 void Vector::pop_back(){
 	
 	//check size great then 0
 	assert(m_size > 0 && "vector is empty");
-	int temp_arr = m_arr[m_size];
 	m_size--;
-	//return temp_arr;
 }
 
 //function which print content vector
@@ -60,7 +75,16 @@ void Vector::print(){
 int Vector::vector_size(){
 	
 	return m_size;
+
 }
 
+//function check with assert function if element exists return that otherwise terminate the program
+int& Vector::get_element(int index){
+	assert(index > 0 && index < m_size && "element not found with that index");
+	return m_arr[index];	
+}
 
-
+//function lets you a print object with []
+int& Vector::operator[](int index){
+	return get_element(index);
+}
