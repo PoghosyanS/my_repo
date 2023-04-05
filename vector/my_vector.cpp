@@ -7,13 +7,11 @@ void Vector::change_capasity(){
 
 	m_capasity *= 2;
 	int *temp_arr = new int[m_capasity];
-	int *m_arr = new int[m_capasity];
 	for (int i = 0; i < m_size;i++){
 		temp_arr[i] = m_arr[i];
 	}
 	delete [] m_arr;
 	m_arr = temp_arr;
-	m_size++;
 }
 //constructor definition
 Vector::Vector(){
@@ -36,18 +34,17 @@ void Vector::push_back(int value){
 			
 			change_capasity();
 		}
-		m_arr[m_size] = value;
-		m_size++;
+		m_arr[m_size++] = value;
 }
 
 //function which delete element end of vector
-int Vector::pop_back(){
+void Vector::pop_back(){
 	
 	//check size great then 0
 	assert(m_size > 0 && "vector is empty");
 	int temp_arr = m_arr[m_size];
 	m_size--;
-	return temp_arr;
+	//return temp_arr;
 }
 
 //function which print content vector
@@ -57,14 +54,12 @@ void Vector::print(){
 		
 		std::cout<<m_arr[i]<<std::endl;
 	}
-	std::cout<<"vector size = "<<vector_size()<<std::endl;
 }
 
 //function which returned size of vector
 int Vector::vector_size(){
 	
-	int temp_size = m_size;
-	return temp_size;
+	return m_size;
 }
 
 

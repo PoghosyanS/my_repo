@@ -25,5 +25,9 @@ int main(){
 	obj.pop_back();
 	obj.print();
 
+	//print size
+
+	std::cout<<"vector size = "<<obj.vector_size()<<std::endl;
+
 	return 0;
 }

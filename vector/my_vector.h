@@ -22,7 +22,7 @@ class Vector
 	void push_back(int value);
 	
 	//pop_back function declaration
-	int pop_back();
+	void pop_back();
 
 	//print function declaration
 	void print();
