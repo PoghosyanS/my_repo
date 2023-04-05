@@ -8,8 +8,8 @@ class Vector
 
 	private:
 	
-	//copy function declaration
-	void copy();
+	//function declaration
+	void change_capasity();
 
 	public:
 	//constructor declaration

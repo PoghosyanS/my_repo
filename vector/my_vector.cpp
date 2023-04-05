@@ -3,7 +3,7 @@
 #include <cassert>
 
 //function which make a capasity 
-void Vector::copy(){
+void Vector::change_capasity(){
 
 	m_capasity *= 2;
 	int *temp_arr = new int[m_capasity];
@@ -34,7 +34,7 @@ void Vector::push_back(int value){
 		
 		if (m_size == m_capasity){
 			
-			copy();
+			change_capasity();
 		}
 		m_arr[m_size] = value;
 		m_size++;
