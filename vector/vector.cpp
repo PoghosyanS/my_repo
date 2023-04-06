@@ -21,6 +21,17 @@ Vector::Vector(){
 	m_arr = new int[m_capacity];
 }
 
+//copy constructor which  copy members of constructor
+Vector::Vector(const Vector &other){
+	this->m_size = other.m_size;
+	this->m_capacity = other.m_capacity;
+	this->m_arr = new int[other.m_capacity];
+	
+	for (int i = 0;i < other.m_size;i++){
+		this->m_arr[i] = other.m_arr[i];
+	}
+}
+
 //destructor which delete m_arr
 Vector::~Vector(){
 	
@@ -59,6 +70,32 @@ void Vector::pop_back(){
 	
 	//check size great then 0
 	assert(m_size > 0 && "vector is empty");
+	m_size--;
+}
+
+//function which returned first element of Vector and check Vector is empty or not
+int Vector::front(){
+
+	assert(m_size != 0 && "vector is empty");
+	return m_arr[0];
+}
+
+//function which returned last element of Vector and check Vector is empty or not
+int Vector::back(){
+
+	assert(m_size != 0 && "vector is empty");
+	return m_arr[m_size - 1];
+}
+
+//function which deleted element in your set index
+void Vector::erase(int index){
+	
+	assert(index >= 0 && m_size > index && "element not found with that index" );
+
+	for (int i = index + 1; i <= m_size;i++){
+		
+		m_arr[i - 1] = m_arr[i];
+	}
 	m_size--;
 }
 

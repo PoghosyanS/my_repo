@@ -15,6 +15,9 @@ class Vector
 	//constructor declaration which initializate members of class
 	Vector();
 
+	//copy constructor function which copy members destructor
+	Vector(const Vector &other);
+
 	//destructor declaration which delete dynamic memory 
 	~Vector();
 
@@ -26,6 +29,15 @@ class Vector
 
 	//insert function declaration which append element in your set index
 	void insert(int index,int value);
+
+	//front function declaration whichreturned first element of Vector
+	int front();
+
+	//back function declaration which returned last element of Vector
+	int back();
+
+	//erase function declaration which deleted element in your set index
+	void erase(int index);
 
 	//print function declaration which print elements in Vector
 	void print();
