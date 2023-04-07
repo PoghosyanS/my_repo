@@ -85,7 +85,7 @@ int Vector::front(){
 //function which returned last element of Vector and check Vector is empty or not
 int Vector::back(){
 
-	assert(m_size != 0 && "vector is empty");
+	assert(m_size > 0 && "vector is empty");
 	return m_arr[m_size - 1];
 }
 
