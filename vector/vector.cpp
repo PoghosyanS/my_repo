@@ -52,6 +52,8 @@ void Vector::push_back(int value){
 //function wich append element in your set index 
 void Vector::insert(int index,int value){
 	
+	assert(index >= 0 && index <= m_size && "element not found with that index");
+
 	if (m_size == m_capacity){
 		change_capacity();
 	}
@@ -117,7 +119,7 @@ int Vector::vector_size(){
 
 //function check with assert function if element exists return that otherwise terminate the program
 int& Vector::get_element(int index){
-	assert(index > 0 && index < m_size && "element not found with that index");
+	assert(index >= 0 && index <= m_size && "element not found with that index");
 	return m_arr[index];	
 }
 
