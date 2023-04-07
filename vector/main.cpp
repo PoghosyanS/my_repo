@@ -55,7 +55,7 @@ int main(){
 	std::cout<<obj.back()<<std::endl;
 	
 	//call erase function
-	obj.erase(2);
+	obj.erase(1);
 	std::cout<<"print vector content after erase"<<std::endl;
 	obj.print();
 
