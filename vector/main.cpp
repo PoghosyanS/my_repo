@@ -1,7 +1,7 @@
 #include <iostream>
 #include "vector.hpp"
 
-int main(){
+int main() {
 
 	//creat Vector object
 	Vector obj;
