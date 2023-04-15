@@ -8,6 +8,8 @@ List::Node::Node(int data = 0,Node* ptrnext = nullptr) {
 	this->ptrnext = ptrnext;
 }
 
+
+
 //initialization members of class list with  default constructor 
 List::List() {
 	m_first = nullptr;
@@ -16,25 +18,14 @@ List::List() {
 
 //Copy constructor that creates a new linked list with the same data as another list
 List::List(const List& other) {
-	m_first = nullptr; 
-    	m_size = 0; 
-    
+	assert(this != &other && "check whether two objects are equal or not");
+    	m_first = nullptr;
+    	m_size = 0;
     	Node* other_node = other.m_first;
     	while (other_node != nullptr) {
-        	Node* new_node = new Node(other_node->data);
-        	if (m_first == nullptr) {
-			m_first = new_node;
-        	} 	
-		else {
-            		Node* tmp = m_first;
-            		while (tmp->ptrnext != nullptr) {
-                	tmp = tmp->ptrnext;
-            		}
-            		tmp->ptrnext = new_node;
-        	}
-        	m_size++; 
-        	other_node = other_node->ptrnext; 
-    	}
+        	push_back(other_node->data);
+        	other_node = other_node->ptrnext;
+    }
 }
 
 //creat destructor it clears the memory space we are using so that we don't have any memory loss
@@ -45,7 +36,9 @@ List::~List() {
 		next = tmp->ptrnext;
 		delete tmp;
 		tmp = next;
+		m_size--;
 	}
+	assert(m_size == 0 && "the list is not deleted");
 }
 
 //function which returned m_size of List
@@ -244,3 +237,9 @@ int &List::operator[](int index) {
 	return tmp->data;
 
 }
+//function allows you to compare the addresses of two objects
+bool List::operator!=(const List& other) {
+    return this != &other;
+}
+
+
