@@ -18,7 +18,6 @@ List::List() {
 
 //Copy constructor that creates a new linked list with the same data as another list
 List::List(const List& other) {
-	assert(this != &other && "check whether two objects are equal or not");
     	m_first = nullptr;
     	m_size = 0;
     	Node* other_node = other.m_first;
@@ -26,6 +25,7 @@ List::List(const List& other) {
         	push_back(other_node->data);
         	other_node = other_node->ptrnext;
     }
+	assert(this != &other && "check whether two objects are equal or not");
 }
 
 //creat destructor it clears the memory space we are using so that we don't have any memory loss
@@ -121,13 +121,20 @@ less than zero the function warns the index does not exist
 */
 void List::remove_by_index(int index) {
 	assert(index >= 0 && index < m_size && "index does not exist");
-	Node *tmp = m_first;
-	for (int i = 0;i < index - 1;i++) {
-		tmp = tmp->ptrnext;
+	if (index == 0 ) {
+		pop_front();
 	}
-	Node* new_element = tmp->ptrnext;
-	tmp->ptrnext = new_element->ptrnext;
-	m_size--;
+	else {
+		Node *tmp = m_first;
+		Node *new_element = nullptr;
+		for (int i = 0;i < index - 1;i++) {
+			tmp = tmp->ptrnext;
+		}
+		new_element = tmp->ptrnext;
+		tmp->ptrnext = new_element->ptrnext;
+		delete new_element;
+		m_size--;
+	}
 }
 
 /*
@@ -162,12 +169,12 @@ warns that the list is empty
 */
 void List::print() {
 	assert(m_size > 0 && "list is empty");
-	Node* pr = m_first;
+	Node* tmp = m_first;
 	for (int i = 0; i < m_size;i++) {
-		std::cout<<pr->data<<std::endl;
-		pr->ptrnext != nullptr;
-		pr = pr->ptrnext;
-
+		if(tmp->ptrnext != nullptr) {
+			std::cout<<tmp->data<<std::endl;
+			tmp = tmp->ptrnext;
+		}
 	}
 }
 
