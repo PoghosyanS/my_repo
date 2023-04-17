@@ -105,13 +105,19 @@ less than zero the function warns the index does not exist
 */
 void List::insert(int data,int index) {
 	assert(index >= 0 && m_size > index && "index does not exist");
-	Node* tmp = m_first;
-	for (int i = 0;i < index -1;i++) {
-		tmp = tmp->ptrnext;
+	if (index == 0) {
+		push_front(data);
 	}
-	Node* newelement = new Node(data,tmp->ptrnext);
-	tmp->ptrnext = newelement;
-	m_size++;
+	else {
+
+		Node* tmp = m_first;
+		for (int i = 0;i < index -1;i++) {
+			tmp = tmp->ptrnext;
+		}
+		Node* newelement = new Node(data,tmp->ptrnext);
+		tmp->ptrnext = newelement;
+		m_size++;
+	}
 }
 
 /*
