@@ -15,10 +15,8 @@ Stack::Stack() {
 
 //creat destructor it clears the memory space we are using so that we don't have any memory loss
 Stack::~Stack() {
-	while(m_node != nullptr) {
-		Node* tmp = m_node;
-		m_node = m_node->ptrnext;
-		delete tmp;
+	while(!is_empty()) {
+		pop();
 	}
 }
 
