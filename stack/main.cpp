@@ -22,8 +22,5 @@ int main() {
 	//check after pop whether the element has been deleted or not
 	assert(a.get_size() == 2 && "element was not deleted");
 
-	//call a print function
-	a.print();
-
 	return 0;
 }

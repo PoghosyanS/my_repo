@@ -25,7 +25,7 @@ public:
 
 	/*
 	declaration is_empty function which to return true when Stack is empty
-	and function to return false when list size great then zero
+	and function to return false when Stack size great then zero
 	*/
 	bool is_empty();
 
@@ -44,9 +44,4 @@ public:
 	*/
 	void pop();
 
-	/*declaration print function which printed elements of stack
-	and the function checks if the size of the stack is less than zero
-	warns that the stack is empty
-	*/
-	void print();
 };

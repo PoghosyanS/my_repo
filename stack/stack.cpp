@@ -7,7 +7,7 @@ Stack::Node::Node(int data = 0,Node *ptrnext = nullptr) {
 	this->data = data;
 	this->ptrnext = ptrnext;
 }
-//initialization members of class list with  default constructor 
+//initialization members of class Stack with  default constructor 
 Stack::Stack() {
 	m_size = 0;
 	m_node = nullptr;
@@ -20,12 +20,12 @@ Stack::~Stack() {
 	}
 }
 
-//function which returned m_size of List
+//function which returned m_size of Stack
 int Stack::get_size() {
 	return m_size;
 }
 
-//function which to return true when list is empty
+//function which to return true when Stack is empty
 bool Stack::is_empty() {
 	if (m_size > 0) {
 		return false;
@@ -48,25 +48,12 @@ void Stack::push(int data) {
 }
 
 /*
-function which to print content from stack
-and the function checks if the size of the stack is less than zero
-warns that the stack is empty
-*/
-void Stack::print() {
-	assert(m_size > 0 && "stack s empty");
-	while(!is_empty()) {
-		std::cout<<top()<<std::endl;
-		pop();
-	}
-}
-
-/*
 function deletes the most recent entered element of the stack
 and the function checks if the size of the stack is less than zero
 warns that the stack is empty
 */
 void Stack::pop() {
-	assert(m_size > 0  && "stack is empty");
+	assert(get_size() > 0  && "stack is empty");
 	Node* tmp = m_node;
 	m_node = m_node->ptrnext;
 	delete tmp;
