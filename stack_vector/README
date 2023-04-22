@@ -1,0 +1,32 @@
+Makefile README
+
+This Makefile is used to build a C++ project, where the source files are located in the current directory and the output executable file is named "project". The Makefile utilizes the g++ compiler and the make utility to automatically compile and link the source code, as well as manage dependencies.
+
+Targets:
+
+"project" (default target): the final executable file that will be generated after compiling and linking the object files
+"clean": removes all object files, dependency files, and the executable file
+"run": runs the final executable file
+Variables:
+
+"TARGET": the name of the final executable file (default is "project")
+"SRC": a list of source files in the current directory (all files ending in ".cpp")
+"DEP_DIR": the name of the directory where dependency files will be stored
+"OBJ": a list of object files generated from the source files
+"DEP": a list of dependency files generated from the source files
+"CC": the compiler used to build the project (default is g++)
+Rules:
+
+"project": links all object files together to create the final executable file
+"%.o": compiles each source file into an object file
+"$(DEP_DIR)/%.dep": generates a dependency file for each source file using the -M flag in g++ to automatically determine dependencies
+Dependencies:
+
+"-include $(DEP)": includes all dependency files when building the project, which helps to ensure that the correct object files are built and linked together
+Cleaning:
+
+"clean": removes all object files, dependency files, and the final executable file
+Running:
+
+"run": runs the final executable file
+To build the project, simply navigate to the directory containing the Makefile and type "make" in the terminal. To clean up all files generated during the build process, type "make clean". To run the final executable file, type "make run".
