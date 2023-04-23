@@ -1,3 +1,3 @@
-g++ -shared main.cpp -o libvzgo.so   vzgo.cpp -fPIC // write shared name main.cpp -o name of lib  filename where is function and -fPIC
-g++ main.cpp -L. -lvzgo -o myfile // use library write main.cpp -L where is the library file -l libraryname without <<lib and .so>> and -o runfilename
+g++ -shared main.cpp -o libtemp.so   temp.cpp -fPIC // write shared name main.cpp -o name of lib  filename where is function and -fPIC
+g++ main.cpp -L. -ltemp -o myfile // use library write main.cpp -L where is the library file -l libraryname without <<lib and .so>> and -o runfilename
 export LD_LIBRARY_PATH=/home/simon/mycpp/cpp/lib/ // and this line said where search library
