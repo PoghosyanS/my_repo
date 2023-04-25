@@ -1,38 +1,34 @@
-Makefile README
+Description
+
+This project is a simple implementation of a stack data structure in C++. It includes a stack class with methods to push, pop,isEmpty,get_size and top at the top element of the stack, as well as a constructor and destructor.
+
+Usage
+
+To use your custom stack class in your own C++ program, you can follow these steps.
+
+1.Include the header file for your stack class in your C++ source code.
+2.Create a new stack object  in main.cpp file.
+3.Use the push() method to add elements to the stack.
+4.Use the top() method to view the top element of the stack.
+5.Use the pop() method to remove elements from the stack.
+6.Use the isEmpty() method to check if the stack is empty.
+7.Use the get_size() method returned size od stack.
+
+Getting Started
+
+Once you have the files, you can compile the source code using a  Makefile.
+
+Makefile 
 
 This Makefile is used to build a C++ project, where the source files are located in the current directory and the output executable file is named "project". The Makefile utilizes the g++ compiler and the make utility to automatically compile and link the source code, as well as manage dependencies.
 
-Targets:
+Commands
 
-"project" (default target): the final executable file that will be generated after compiling and linking the object files
-"clean": removes all object files, dependency files, and the executable file
-"run": runs the final executable file
+make:
+This command is used to build the project. It automatically builds the target specified in the $(TARGET) rule. When you run make, it first checks whether the target needs to be rebuilt by comparing the timestamps of the dependencies with that of the target. If any of the dependencies are newer than the target, it rebuilds the target.
 
-Variables:
+make clean: 
+This command is used to clean up the build artifacts. It removes the object files, dependency files, and the final executable.
 
-"TARGET": the name of the final executable file (default is "project")
-"SRC": a list of source files in the current directory (all files ending in ".cpp")
-"DEP_DIR": the name of the directory where dependency files will be stored
-"OBJ": a list of object files generated from the source files
-"DEP": a list of dependency files generated from the source files
-"CC": the compiler used to build the project (default is g++)
-
-Rules:
-
-"project": links all object files together to create the final executable file
-"%.o": compiles each source file into an object file
-"$(DEP_DIR)/%.dep": generates a dependency file for each source file using the -M flag in g++ to automatically determine dependencies
-
-Dependencies:
-
-"-include $(DEP)": includes all dependency files when building the project, which helps to ensure that the correct object files are built and linked together
-
-Cleaning:
-
-"clean": removes all object files, dependency files, and the final executable file
-
-
-Running:
-
-"run": runs the final executable file
-To build the project, simply navigate to the directory containing the Makefile and type "make" in the terminal. To clean up all files generated during the build process, type "make clean". To run the final executable file, type "make run".
+make run: 
+This command is used to run the final executable. It first builds the target if it is not already built, and then runs it.

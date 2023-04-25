@@ -19,6 +19,6 @@ int main() {
 	a.pop();
 	//check after pop whether the element has been deleted or not
 	assert(a.get_size() == 3 && "element was not deleted");
-
+	std::cout<<"------"<<std::endl;
 	return 0;
 }
