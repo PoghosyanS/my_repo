@@ -1,0 +1,45 @@
+Doubly Linked List:
+
+A doubly linked list is a data structure that consists of a sequence of nodes, where each node contains a value and two pointers, one to the previous node and one to the next node in the sequence. The first node in the sequence is called the m_first, and the last node is called the m_last. The pointers allow for efficient insertion and deletion of nodes at any position in the sequence, by updating the adjacent nodes' pointers accordingly.
+
+Implementation:
+
+This implementation of a doubly linked list is written in C++, and consists of a Node class and a Doubly_list class. The Node class represents a single node in the list, and contains a value and two pointers, one to the previous node and one to the next node. The Doubly_List class represents the entire list, and contains pointers to the m_first and m_last nodes, and m_size.
+
+The DoublyLinkedList class provides the following methods for manipulating the list:
+
+1.push_back -Adds a new node with the given data to the end of the list.
+2.pop_back -Removes the last node from the list.
+3.pop_front -Removes the first node from the list.
+4.push_front -Adds a new node with the given data to the beginning of the list.
+5.back -Returns a reference to the data stored in the last node of the list.
+6.front -Returns a reference to the data stored in the first node of the list.
+7.is_empty -Returns true if the list is empty.
+8.get_size -Return size of list.
+9.insert -Inserts a new node with the given data at the specified index in the list.
+10.print -Prints the contents of the list to the console.
+11. operator[] -Returns a reference to the data stored in the node at the specified index in the list.
+12.remove_by_index - remove element in your set index.
+
+Usage:
+
+To use this implementation of a doubly linked list, first create an instance of the Doubly_list class.
+
+Getting Started:
+
+Once you have the files, you can compile the source code using a  Makefile.
+
+Makefile :
+
+This Makefile is used to build a C++ project, where the source files are located in the current directory and the output executable file is named "project". The Makefile utilizes the g++ compiler and the make utility to automatically compile and link the source code, as well as manage dependencies.
+
+Commands:
+
+make:
+This command is used to build the project. It automatically builds the target specified in the $(TARGET) rule. When you run make, it first checks whether the target needs to be rebuilt by comparing the timestamps of the dependencies with that of the target. If any of the dependencies are newer than the target, it rebuilds the target.
+
+make clean: 
+This command is used to clean up the build artifacts. It removes the object files, dependency files, and the final executable.
+
+make run: 
+This command is used to run the final executable. It first builds the target if it is not already built, and then runs it.
