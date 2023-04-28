@@ -19,7 +19,7 @@ The DoublyLinkedList class provides the following methods for manipulating the l
 9.insert -Inserts a new node with the given data at the specified index in the list.
 10.print -Prints the contents of the list to the console.
 11. operator[] -Returns a reference to the data stored in the node at the specified index in the list.
-12.remove_by_index - remove element in your set index.
+12.reverse -Reverse the order of the nodes in the list.
 
 Usage:
 

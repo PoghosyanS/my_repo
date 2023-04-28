@@ -1,4 +1,4 @@
-#include "doubly_list.cpp"
+#include "doubly_list.hpp"
 
 int main() {
 	
@@ -34,14 +34,14 @@ int main() {
 	assert(a.get_size() == 4 && "element was not deleted");
 	
 	//call insert function and check with assert element incremented in your set index
-	a.insert(1,999);
-	assert(a[1] == 999 && "elements are not incremented");
+	a.insert(2,999);
+	assert(a[2] == 999 && "elements are not incremented");
 
-	//call remove_by_index function and check with assert element deleted or not
-	a.remove_by_index(1);
-	assert(a.get_size() == 4 && "element was not deleted" );
+	//call reverse function and check with assert have the elements changed by places or not
+	a.reverse();
+	assert(a.front() == 8 && a.back() == 5 && "no change occurred");
 
-	//call print function
+	//call print function 
 	a.print();
 
 	return 0;

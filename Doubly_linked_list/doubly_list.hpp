@@ -87,11 +87,38 @@ warns that the list is empty
 */
 void pop_back() {
 	assert(m_size > 0 && "list is empty");
-	Node<T> *tmp = nullptr;
-	m_last = m_last->ptrprev;
-	m_last->ptrnext = nullptr;
-	delete tmp;
-	m_size--;
+	if (m_size == 1){
+		delete m_last;
+		m_last = nullptr;
+		m_first = nullptr;
+	}
+	else {
+		Node<T> *tmp = m_last;
+		m_last = m_last->ptrprev;
+		m_last->ptrnext = nullptr;
+		delete tmp;
+		m_size--;
+	}
+}
+
+/*
+function which swaps list members by places
+and the function checks if the size of the list is less than zero
+warns that the list is empty
+*/
+void reverse() {
+	assert(m_size > 0 && "list is empty");
+	Node<T> * tmp = nullptr;
+	Node<T> *elem = m_first;
+	while (elem != nullptr) {
+		tmp = elem->ptrprev;
+		elem->ptrprev = elem->ptrnext;
+		elem->ptrnext = tmp;
+		elem = elem->ptrprev;
+	}
+	tmp = m_first;
+	m_first = m_last;
+	m_last = tmp;
 }
 
 //function which to append element front from list
@@ -129,75 +156,45 @@ function which to append element in your set index
 if the index is greater than or equal to the size of the list or 
 less than zero the function warns the index does not exist
 */
-void insert(T index,T data) {
-	assert(index >= 0 && index < m_size && "index does not exist");
-	Node<T> *tmp = new Node<T>(data);
-	if (m_first == nullptr) {
-		m_first = tmp;
-		m_last = tmp;
-	}
-	else if (index == 0) {
-		tmp->ptrnext = m_first;
-		m_first->ptrprev = tmp;
-		m_first = tmp;
-	}
-	else if (index < m_size / 2) {
-		Node<T> *new_node = m_first;
-		for (int i = 0; i < index;i++) {
-			new_node = new_node->ptrnext;
-		}
-		tmp->ptrnext = new_node;
-		tmp->ptrprev = new_node->ptrprev;
-		new_node->ptrprev->ptrnext = tmp;
-		new_node->ptrprev = tmp;
-	}
+void insert(T index, T data) {
+	assert(index >= 0 && index <= m_size && "index does not exist");
+    	Node<T>* new_node = new Node<T>(data);
+    	if (m_first == nullptr) {
+        	m_first = new_node;
+        	m_last = new_node;
+    	} 	
+    	else if (index == 0) { 
+        	new_node->ptrnext = m_first;
+        	m_first->ptrprev = new_node;
+        	m_first = new_node;
+    	} 
+    	else if (index == m_size) {
+        	new_node->ptrprev = m_last;
+        	m_last->ptrnext = new_node;
+        	m_last = new_node;
+    	} 
+    	else {
+        	Node<T>* tmp;
+        	if (index < m_size / 2) {
+            		tmp = m_first;
+            		for (int i = 0; i < index; i++) {
+                	tmp = tmp->ptrnext;
+            		}
+        	} 
 	else {
-		Node<T> *new_node = m_last;
-		for (int i = m_size - 1;i > index;i--) {
-			new_node = new_node->ptrprev;
-		}
-		tmp->ptrnext = new_node->ptrnext;
-		tmp->ptrprev = new_node;
-		new_node->ptrprev = tmp;
-		new_node->ptrnext = tmp;
-	}
-	m_size++;
-}
-void remove_by_index(T index) {
-	assert(index >= 0 && index < m_size && "index does not exist");	
-	Node<T> *tmp = nullptr;
-	if (index < m_size / 2) {
-		tmp = m_first;
-		for (int i = 0;i < index;i++) {
-			tmp = tmp->ptrnext;
-		}
-	}
-	else {
-		tmp = m_last;
-		for (int i = m_size - 1;i > index;i--) {
-			tmp = tmp->ptrprev;
-		}
-	}
+        	tmp = m_last;
+            	for (int i = m_size - 1; i > index; i--) {
+                	tmp = tmp->ptrprev;
+            	}
+        }
 
-	if (tmp == m_first) {
-		m_first = tmp->ptrnext;
-		if(m_first != nullptr) {
-			m_first->ptrprev = nullptr;
-		}
-	}
-	else if (tmp == m_last) {
-		m_last = tmp->ptrprev;
-		if (m_last != nullptr) {
-			m_last->ptrnext = nullptr;
-		}
-	}
-	else {
-		tmp->ptrprev->ptrnext = tmp->ptrnext;
-		tmp->ptrnext->ptrprev = tmp->ptrprev;
-	}
-	delete tmp;
-	m_size--;
+        new_node->ptrnext = tmp;
+        new_node->ptrprev = tmp->ptrprev;
+        tmp->ptrprev->ptrnext = new_node;
+        tmp->ptrprev = new_node;
 
+    	}
+    	m_size++;
 }
 
 /*
