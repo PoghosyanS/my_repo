@@ -223,13 +223,11 @@ and the function checks if the size of the list is less than zero
 warns that the list is empty
 */
 void print() {
+	assert(m_size > 0 && "list is empty");
 	Node<T> *tmp = m_first;
-	while(tmp ->ptrnext != nullptr) {
+	while(tmp != nullptr) {
 		std::cout<<tmp->data<<std::endl;
 		tmp = tmp->ptrnext;
-	}
-	if (tmp != nullptr) {
-		std::cout<<tmp->data<<std::endl;
 	}
 }
 
