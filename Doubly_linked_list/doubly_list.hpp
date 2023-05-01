@@ -20,6 +20,7 @@ public:
 
 };
 
+
 //create type T for class Doubly_list
 template <class T>
 class Doubly_list {
@@ -216,6 +217,59 @@ T& back() {
 	assert(m_size > 0 && "list is empty");
 	return m_last->data;
 }
+
+/*
+sorts the list members in ascending order
+and the function checks if the size of the list is less than zero
+warns that the list is empty
+*/
+void bubbleSort() {
+	assert(m_size > 0 && "list is empty");
+	Node<T> *tmp = m_first;
+    	Node<T> *second = tmp->ptrnext;
+    	T temp;
+    	for (int i = 0;i < m_size;i++) {
+		for (int j = 0;j < m_size - i - 1;j++) {
+			if (tmp ->data > second->data) {
+				temp = tmp->data;
+				tmp->data = second->data;
+				second->data = temp;
+			}
+			tmp = second;
+			second = second->ptrnext;
+
+		}
+		tmp = m_first;
+		second = tmp->ptrnext;
+    	}
+    
+}
+
+/*
+sorts the list members in ascending order
+and the function checks if the size of the list is less than zero
+warns that the list is empty
+*/
+void insertionSort() {
+	assert(m_size > 0 && "list is empty");
+	Node<T> *second = m_first->ptrnext;
+	while (second != nullptr) {
+		T tmp = second->data;
+		Node<T> *prev = second->ptrprev;
+		while (prev != nullptr && prev->data > tmp) {
+			prev->ptrnext->data = prev->data;
+			prev = prev->ptrprev;
+		}
+		if (prev == nullptr) {
+			m_first->data = tmp;
+		}
+		else {
+			prev->ptrnext->data = tmp;
+		}
+		second = second->ptrnext;
+	}
+}
+
 
 /*
 function which to print content from list

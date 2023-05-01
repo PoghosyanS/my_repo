@@ -6,8 +6,8 @@ int main() {
 	Doubly_list<int> a;
 	
 	//call a push_back function and check with assert elements incremented end of list or not
-	a.push_back(5);
 	a.push_back(6);
+	a.push_back(5);
 	a.push_back(7);
 	a.push_back(8);
 	a.push_back(9);
@@ -39,7 +39,15 @@ int main() {
 
 	//call reverse function and check with assert have the elements changed by places or not
 	a.reverse();
-	assert(a.front() == 8 && a.back() == 5 && "no change occurred");
+	assert(a.front() == 8 && a.back() == 6 && "no change occurred");
+
+	//call bubbleSort function and check with assert sorts the list members in ascending order or not
+	a.bubbleSort();
+	assert(a[0] == 5 && a[1] == 6 && a[2] == 7 && a[3] == 8 && a[4] == 999 && "list not sorted");
+
+	//call insertionSort function and check with assert sorts the list members in ascending order or not
+	a.insertionSort();
+	assert(a[0] == 5 && a[1] == 6 && a[2] == 7 && a[3] == 8 && a[4] == 999 && "list not sorted");
 
 	//call print function 
 	a.print();

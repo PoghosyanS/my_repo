@@ -20,6 +20,8 @@ The DoublyLinkedList class provides the following methods for manipulating the l
 10.print -Prints the contents of the list to the console.
 11. operator[] -Returns a reference to the data stored in the node at the specified index in the list.
 12.reverse -Reverse the order of the nodes in the list.
+13.bubbleSort -Sorted elements of list.
+14.insertionSort -Sorted elements of list.
 
 Usage:
 
